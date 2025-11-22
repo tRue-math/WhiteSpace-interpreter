@@ -11,7 +11,7 @@ struct Dup {};
 
 struct Swap {};
 
-struct Pop {};
+struct Drop {};
 
 struct Copy {
     int index;
@@ -79,7 +79,7 @@ using ImpStack = std::variant<
     Push,
     Dup,
     Swap,
-    Pop,
+    Drop,
     Copy,
     Delete
 >;
