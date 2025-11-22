@@ -1,3 +1,5 @@
+#pragma once
+
 #include"instruction.hpp"
 #include"stack.hpp"
 #include"heap.hpp"
