@@ -3,8 +3,13 @@
 #include"instruction.hpp"
 #include"stack.hpp"
 #include"heap.hpp"
+#include<vector>
+#include<map>
 
-using Program = std::vector<Instruction>;
+struct Program {
+    std::vector<Instruction> instructions;
+    std::map<int, int> labels;
+};
 
 struct State {
     Stack stack;
