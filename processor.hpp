@@ -9,4 +9,4 @@
 #include<regex>
 
 void execute_instruction(const Instruction& instr, State& state);
-void execute_program(const Program& program, State& state);
+void execute_program(State& state);

@@ -8,4 +8,4 @@
 #include<regex>
 
 std::string make_whitespace_visible(const std::string& input);
-State parse_string_to_state(const std::string& code);
+State parse_string_to_state(std::string& code);

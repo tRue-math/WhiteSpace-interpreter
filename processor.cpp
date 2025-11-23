@@ -207,7 +207,7 @@ void execute_instruction(const Instruction& instr, State& state) {
     Executor executor{state};
     std::visit(executor, instr);
 }
-void process_program(State& state) {
+void execute_program(State& state) {
     while (0<=state.pc && state.pc < state.program.instructions.size()) {
         const Instruction& instr = state.program.instructions[state.pc];
         execute_instruction(instr, state);

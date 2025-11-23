@@ -15,4 +15,4 @@ public:
     void delete_n(int num);
 private:
     std::vector<int> data;
-}
+};

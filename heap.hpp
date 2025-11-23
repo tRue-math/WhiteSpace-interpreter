@@ -8,4 +8,4 @@ public:
     int load(int address);
 private:
     std::map<int, int> storage;
-}
+};
