@@ -120,7 +120,8 @@ struct Executor {
         if(ch == EOF) {
             state.stack.push(-1);
         } else {
-            state.stack.push(static_cast<int>(ch));
+            int address = state.stack.pop();
+            state.heap.store(address, static_cast<int>(ch));
         }
         state.pc++;
     }
@@ -139,7 +140,8 @@ struct Executor {
 
         try {
             int value = std::stoi(match.str(1));
-            state.stack.push(value);
+            int addr = state.stack.pop();
+            state.heap.store(addr, value);
         } catch (const std::out_of_range&) {
             throw std::runtime_error("Integer input out of range");
         }
