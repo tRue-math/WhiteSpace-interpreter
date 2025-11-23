@@ -6,6 +6,7 @@
 #include<iostream>
 #include<string>
 #include<regex>
+#include<string>
 
 std::string make_whitespace_visible(const std::string& input);
 State parse_string_to_state(std::string& code);

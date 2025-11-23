@@ -5,10 +5,11 @@
 #include"heap.hpp"
 #include<vector>
 #include<map>
+#include<string>
 
 struct Program {
     std::vector<Instruction> instructions;
-    std::map<int, int> labels;
+    std::map<std::string, int> labels;
 };
 
 struct State {

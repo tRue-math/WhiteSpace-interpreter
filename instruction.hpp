@@ -54,23 +54,23 @@ struct ReadInt {};
 // Control Flow
 
 struct Label {
-    int label;
+    std::string label;
 };
 
 struct Jump {
-    int label;
+    std::string label;
 };
 
 struct JumpZero {
-    int label;
+    std::string label;
 };
 
 struct JumpNeg {
-    int label;
+    std::string label;
 };
 
 struct Call {
-    int label;
+    std::string label;
 };
 
 struct Return {};

@@ -44,13 +44,10 @@ int parse_number(const std::string& code, int& pos) {
     return value;
 }
 
-int parse_label(const std::string& code, int& pos) {
-    int label = 0;
+std::string parse_label(const std::string& code, int& pos) {
+    std::string label = "";
     while (code[pos] != 'L') {
-        label <<= 1;
-        if (code[pos] == 'T') {
-            label |= 1;
-        }
+        label += code[pos];
         pos++;
     }
     pos++; // skip L
@@ -199,21 +196,21 @@ int parse_instruction(const std::string& code, int pos, Instruction& instr) {
             if (code[pos] == 'S') {
                 // Label
                 pos++;
-                int label = parse_label(code, pos);
+                std::string label = parse_label(code, pos);
                 instr = Label{label};
                 return pos;
             }
             if (code[pos] == 'T') {
                 // Call
                 pos++;
-                int label = parse_label(code, pos);
+                std::string label = parse_label(code, pos);
                 instr = Call{label};
                 return pos;
             }
             if (code[pos] == 'L') {
                 // Jump
                 pos++;
-                int label = parse_label(code, pos);
+                std::string label = parse_label(code, pos);
                 instr = Jump{label};
                 return pos;
             }
@@ -222,14 +219,14 @@ int parse_instruction(const std::string& code, int pos, Instruction& instr) {
             if (code[pos] == 'S') {
                 // JumpZero
                 pos++;
-                int label = parse_label(code, pos);
+                std::string label = parse_label(code, pos);
                 instr = JumpZero{label};
                 return pos;
             }
             if (code[pos] == 'T') {
                 // JumpNeg
                 pos++;
-                int label = parse_label(code, pos);
+                std::string label = parse_label(code, pos);
                 instr = JumpNeg{label};
                 return pos;
             }

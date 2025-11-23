@@ -154,7 +154,7 @@ struct Executor {
     void operator()(const Jump& instr) const {
         auto it = state.program.labels.find(instr.label);
         if (it == state.program.labels.end()) {
-            throw std::runtime_error("Undefined label: " + std::to_string(instr.label));
+            throw std::runtime_error("Undefined label: " + instr.label);
         }
         state.pc = it->second;
     }
@@ -163,7 +163,7 @@ struct Executor {
         if (value == 0) {
             auto it = state.program.labels.find(instr.label);
             if (it == state.program.labels.end()) {
-                throw std::runtime_error("Undefined label: " + std::to_string(instr.label));
+                throw std::runtime_error("Undefined label: " + instr.label);
             }
             state.pc = it->second;
         } else {
@@ -175,7 +175,7 @@ struct Executor {
         if (value < 0) {
             auto it = state.program.labels.find(instr.label);
             if (it == state.program.labels.end()) {
-                throw std::runtime_error("Undefined label: " + std::to_string(instr.label));
+                throw std::runtime_error("Undefined label: " + instr.label);
             }
             state.pc = it->second;
         } else {
@@ -186,7 +186,7 @@ struct Executor {
         state.call_stack.push_back(state.pc + 1);
         auto it = state.program.labels.find(instr.label);
         if (it == state.program.labels.end()) {
-            throw std::runtime_error("Undefined label: " + std::to_string(instr.label));
+            throw std::runtime_error("Undefined label: " + instr.label);
         }
         state.pc = it->second;
     }
