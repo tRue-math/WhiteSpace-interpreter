@@ -61,3 +61,10 @@ void Stack::delete_n(int num) {
     }
     data.push_back(top);
 }
+
+void Stack::debug_print() const {
+    for (const int& value : data) {
+        std::cout << value << " ";
+    }
+    std::cout << std::endl;
+}

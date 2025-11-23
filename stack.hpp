@@ -2,6 +2,7 @@
 
 #include<vector>
 #include<stdexcept>
+#include<iostream>
 
 class Stack {
 public:
@@ -13,6 +14,8 @@ public:
     void drop();
     void copy(int index);
     void delete_n(int num);
+
+    void debug_print() const;
 private:
     std::vector<int> data;
 };
