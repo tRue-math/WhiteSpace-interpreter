@@ -238,8 +238,17 @@ int parse_instruction(const std::string& code, int pos, Instruction& instr) {
                 return pos;
             }
         }
+        if (code[pos] == 'L') {
+            // Halt
+            pos++;
+            if (code[pos] == 'L') {
+                pos++;
+                instr = Halt{};
+                return pos;
+            }
+        }
     }
-    return pos;
+    return start_pos;
 }
 
 void label_resolution(State& state) {
@@ -258,7 +267,6 @@ void label_resolution(State& state) {
 State parse_string_to_state(std::string& code) {
     State state;
     std::string visible_code = make_whitespace_visible(code);
-    // std::cout<<visible_code<<std::endl;
     int pos=0;
     while (pos < visible_code.size()) {
         Instruction instr;
