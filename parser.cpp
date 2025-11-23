@@ -92,7 +92,7 @@ int parse_instruction(const std::string& code, int pos, Instruction& instr) {
                 int index = parse_number(code, pos);
                 instr = Copy{index};
                 return pos;
-            } else if (code[pos] == 'T') {
+            } else if (code[pos] == 'L') {
                 // Delete
                 pos++;
                 int value = parse_number(code, pos);
@@ -216,6 +216,7 @@ int parse_instruction(const std::string& code, int pos, Instruction& instr) {
             }
         }
         if (code[pos] == 'T') {
+            pos++;
             if (code[pos] == 'S') {
                 // JumpZero
                 pos++;
