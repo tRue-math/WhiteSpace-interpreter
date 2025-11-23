@@ -258,6 +258,7 @@ void label_resolution(State& state) {
 State parse_string_to_state(std::string& code) {
     State state;
     std::string visible_code = make_whitespace_visible(code);
+    // std::cout<<visible_code<<std::endl;
     int pos=0;
     while (pos < visible_code.size()) {
         Instruction instr;
@@ -266,6 +267,45 @@ State parse_string_to_state(std::string& code) {
             throw std::runtime_error("Failed to parse instruction at position " + std::to_string(pos) + ": " + visible_code.substr(pos, 10));
         }
         state.program.instructions.push_back(instr);
+        // Debug output
+        // {
+        //     std::cout << "Parsed instruction at position " << pos << ": ";
+        //     if (std::holds_alternative<ImpStack>(instr)) {
+        //         std::cout << "ImpStack" << std::endl;
+        //         if (std::holds_alternative<Push>(std::get<ImpStack>(instr))) {
+        //             std::cout << "  Push " << std::get<Push>(std::get<ImpStack>(instr)).value << std::endl;
+        //         }
+        //     } else if (std::holds_alternative<ImpArithmetic>(instr)) {
+        //         std::cout << "ImpArithmetic" << std::endl;
+        //     } else if (std::holds_alternative<ImpHeap>(instr)) {
+        //         std::cout << "ImpHeap" << std::endl;
+        //     } else if (std::holds_alternative<ImpIO>(instr)) {
+        //         std::cout << "ImpIO" << std::endl;
+        //     } else if (std::holds_alternative<ImpControlFlow>(instr)) {
+        //         std::cout << "ImpControlFlow" << std::endl;
+        //         if (std::holds_alternative<Label>(std::get<ImpControlFlow>(instr))) {
+        //             std::cout << "  Label " << std::get<Label>(std::get<ImpControlFlow>(instr)).label << std::endl;
+        //         }
+        //         if (std::holds_alternative<Jump>(std::get<ImpControlFlow>(instr))) {
+        //             std::cout << "  Jump " << std::get<Jump>(std::get<ImpControlFlow>(instr)).label << std::endl;
+        //         }
+        //         if (std::holds_alternative<Call>(std::get<ImpControlFlow>(instr))) {
+        //             std::cout << "  Call " << std::get<Call>(std::get<ImpControlFlow>(instr)).label << std::endl;
+        //         }
+        //         if (std::holds_alternative<JumpZero>(std::get<ImpControlFlow>(instr))) {
+        //             std::cout << "  JumpZero " << std::get<JumpZero>(std::get<ImpControlFlow>(instr)).label << std::endl;
+        //         }
+        //         if (std::holds_alternative<JumpNeg>(std::get<ImpControlFlow>(instr))) {
+        //             std::cout << "  JumpNeg " << std::get<JumpNeg>(std::get<ImpControlFlow>(instr)).label << std::endl;
+        //         }
+        //         if (std::holds_alternative<Return>(std::get<ImpControlFlow>(instr))) {
+        //             std::cout << "  Return" << std::endl;
+        //         }
+        //         if (std::holds_alternative<Halt>(std::get<ImpControlFlow>(instr))) {
+        //             std::cout << "  Halt" << std::endl;
+        //         }
+        //     }
+        // }
         pos = new_pos;
     }
     label_resolution(state);
